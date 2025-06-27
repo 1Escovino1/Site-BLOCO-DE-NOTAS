@@ -1,9 +1,9 @@
-// Elementos 
+
 const notesContainer = document.querySelector("#notes-container");
 const noteInput = document.querySelector("#note-content");
 const addNoteBtn = document.querySelector(".add-note");
 
-// Funções 
+
 
 function showNotes(){
     cleanNotes();
@@ -50,11 +50,11 @@ function createNote(id, content, fixed) {
     const textarea = document.createElement("textarea");
     textarea.value = content;
     textarea.placeholder = "Adicione algum texto...";
-    textarea.readOnly = true; // Começa como somente leitura
+    textarea.readOnly = true; 
 
     element.appendChild(textarea);
 
-    // Ícones
+    
     const pinIcon = document.createElement("i");
     pinIcon.classList.add("bi", "bi-pin");
     element.appendChild(pinIcon);
@@ -71,12 +71,11 @@ function createNote(id, content, fixed) {
     editIcon.classList.add("bi", "bi-pencil");
     element.appendChild(editIcon);
 
-    // Se nota está fixa
+    
     if (fixed) {
         element.classList.add("fixed");
     }
 
-    // Eventos
     pinIcon.addEventListener("click", () => {
         toggleFixNote(id);
     });
@@ -93,12 +92,12 @@ function createNote(id, content, fixed) {
         const isEditing = !textarea.readOnly;
 
         if (isEditing) {
-            // Salvar alterações
+          
             updateNote(id, textarea.value);
             textarea.readOnly = true;
             editIcon.classList.replace("bi-check-lg", "bi-pencil");
         } else {
-            // Habilitar edição
+            
             textarea.readOnly = false;
             textarea.focus();
             editIcon.classList.replace("bi-pencil", "bi-check-lg");
@@ -170,7 +169,7 @@ function getNotes(){
 function saveNotes(notes){
     localStorage.setItem("notes", JSON.stringify(notes));
 }
-// Eventos
+
 addNoteBtn.addEventListener("click", () => addNote());
 // Inicialização
 
